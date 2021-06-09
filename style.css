@@ -1,0 +1,80 @@
+*{ margin: 0; padding: 0; box-sizing: border-box; color:rgb(248, 245, 55);
+    font-family: 'Josefin Sans', sans-serif;}
+    
+
+
+.logo img{
+
+     float: left;
+     width: 100px;
+     height: auto;
+        
+        
+ }
+
+body{
+    margin: 0;
+    font-size: 1.125em;
+    line-height: 1.6;
+    min-height: 300vh;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    background-image: url(/static/bg3.jpg);
+}
+
+
+
+footer{
+    bottom: 0px;
+    width: 100%;
+    background: #111;
+    margin-top: auto;
+}
+
+.main-content{
+    display: flex;
+}
+
+.main-content .box{
+    flex-basis: 80%;
+    padding: 10px 20px;
+
+}
+
+.box h2{
+    font-size: 1.125rem;
+    font-weight: 600;
+    
+}
+
+.box .content{
+    margin: 20px 0 0 0;
+}
+
+.box .content p{
+    text-align: justify;
+}
+
+.right .content .social{
+    margin: 20px 0 0 0;
+}
+
+.right .content .social a{
+    padding: 0 2px;
+}
+
+.right .content .social a span{
+    height: 40px;
+    width: 40px;
+    background: #1a1a1a;
+    line-height: 40px;
+    text-align: center;
+    font-size: 18px;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.right .content .social a span:hover{
+    background: #f12012;
+}

@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet"  type="text/css" href="static/css/style.css">
+
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <title>Login</title>
+  </head>
+  <body>
+
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+
+
+
+<ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/services">Services</a>
+      </li>
+     
+      
+
+ <li class="nav-item">
+        <a class="nav-link" href="/gallery">Gallery</a>
+      </li>
+
+ 
+
+      <li class="nav-item">
+        <a class="nav-link" href="/contactus">Contact Us</a>
+       
+      </li>
+
+
+{% if request.user.is_staff %}
+<li class="nav-item"><a class="nav-link" href="{% url 'indexx' %}"><h7 style="color:lightyellow;">Admin Page</a></h7></li>
+<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Doctor</a>
+      <div class="dropdown-menu">
+          <a class="dropdown-item" href="{% url 'add_doctor' %}">Add Doctor</a>
+      <a class="dropdown-item" href="{% url 'view_doctor' %}">View Doctor</a>
+      </div>
+       </li>
+
+<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Patient</a>
+      <div class="dropdown-menu">
+          <a class="dropdown-item" href="{% url 'add_patient' %}">Add Patient</a>
+      <a class="dropdown-item" href="{% url 'view_patient' %}">View Patient</a>
+      </div>
+       </li>
+
+       <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Appointment</a>
+      <div class="dropdown-menu">
+          <a class="dropdown-item" href="{% url 'add_appointment' %}">Add Appointment</a>
+      <a class="dropdown-item" href="{% url 'view_appointment' %}">View Appointment</a>
+      </div>
+       </li>
+
+
+
+    <li class="nav-item"><a class="nav-link" href="{% url 'logout'%}">Logout</a></li>
+    {% endif %}
+
+
+
+    </ul>
+   
+  </div>
+</nav>
+
+
+<div class="container" style="margin-top:50px">
+    <h2 class="text-center">Add Patient</h2>
+    <br><br>
+    <form method="POST" action="">
+        {% csrf_token %}
+       <label>Registration No.</label>
+       <input type="text" class="form-control" name="registration1" required>
+       <label>Registration Date</label>
+       <input type="text" class="form-control" name="registration2" required>
+       <label>Name</label>
+       <input type="text" class="form-control" name="name" required>
+       <label>Gender</label>
+       <input type="text" class="form-control" name="gender" required>
+       <label>DOB</label>
+       <input type="text" class="form-control" name="dob" required>
+       <label>Address</label>
+       <input type="text" class="form-control" name="address" required>
+       <label>Contact No.</label>
+       <input type="text" class="form-control" name="phone" required>
+       <label>Hospital Referred by</label>
+       <input type="text" class="form-control" name="hospital" required>
+       <label>Test Date</label>
+       <input type="text" class="form-control" name="testdate" required>
+       <label>Test Type</label>
+       <input type="text" class="form-control" name="testtype" required>
+       <label>Doctor's Name</label>
+       <input type="text" class="form-control" name="doctorname" required>
+        <label>Fees</label>
+       <input type="text" class="form-control" name="fees" required>
+       <br>
+       <input type="submit" value="Submit" class="form-control btn btn-primary">
+    
+    </form>
+</div>
+
+{% ifequal error "no" %}
+<script>
+     alert('Record Saved successfully');
+     window.location=('{% url 'view_patient' %}')
+</script>
+{% endifequal %}
+
+{% ifequal error "yes" %}
+<script>
+     alert('Something went wrong, try again');
+</script>
+{% endifequal %}
+
+
+
+
+ <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+  </body>
+</html>
